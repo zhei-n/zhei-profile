@@ -1,0 +1,22 @@
+{
+  "name": "simple-portfolio",
+  "version": "1.0.0",
+  "description": "A simple portfolio web page to showcase projects and skills.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined'",
+    "test": "node ./scripts/test-projects-json.js"
+  },
+  "keywords": [
+    "portfolio",
+    "web",
+    "projects"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
