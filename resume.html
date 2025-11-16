@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume — Your Name</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    /* Minimal overrides for a clean print layout */
+    body{background:#fff;color:#111}
+    .container{max-width:760px;padding:28px;margin:0 auto}
+    header.resume-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    header.resume-header h1{margin:0;font-size:1.4rem}
+    .print-btn{display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:#f5f7fb;color:#111;text-decoration:none}
+    .skills-grid{display:block}
+    .skill-category{background:transparent;padding:6px;border-radius:4px;border:0}
+    .job{background:transparent;padding:8px;border-radius:4px;margin-bottom:8px}
+    @media print{
+      .print-only{display:none}
+      a[href]:after{content:''}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="resume-header">
+      <h1>Neil Ian C. Zambrano</h1>
+      <div class="print-only">
+        <a href="#" class="print-btn" onclick="window.print();return false">Print / Save as PDF</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Email: neil.zambrano.it@gmail.com</p>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category"><strong>Networking:</strong> VPN, MikroTik, Pi-hole, Power DNS, Zabbix, PfSense</div>
+        <div class="skill-category"><strong>Systems:</strong> Windows / Linux servers, Nextcloud, Synology, Asterisk VOIP</div>
+        <div class="skill-category"><strong>Security:</strong> Wazuh, firewall configuration, endpoint protection</div>
+        <div class="skill-category"><strong>ERP:</strong> Acumatica, Odoo, Human Incubator POS (flowchart design, user training)</div>
+        <div class="skill-category"><strong>Design:</strong> Adobe Illustrator, Photoshop, After Effects, Canva, CapCut</div>
+        <div class="skill-category"><strong>Other:</strong> CCTV / NVR setup, network cabling, graphic design, POS/computer troubleshooting, end-user technical support</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Accomplishments</h2>
+
+      <article class="job">
+        <h3>Goldtown Industrial Sales Corporation — System Administrator</h3>
+        <p class="job-meta">Lapasan, Cagayan de Oro — Jan 2023 – Feb 2025</p>
+        <ul>
+          <li>Reduced system downtime through proactive monitoring (Zabbix, Wazuh) and troubleshooting.</li>
+          <li>Configured and secured network infrastructure (PfSense, MikroTik switches, VPNs) across 5+ branches and 4 sister companies.</li>
+          <li>Streamlined file management by administering Nextcloud / Synology systems for 100+ users.</li>
+          <li>Developed video tutorials and training materials (Adobe Suite, Canva) to improve ERP software adoption.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>Smile Printing Services / JVH Printing Services — Graphic Artist (Freelance/Contract)</h3>
+        <p class="job-meta">Balingasag, Misamis Oriental</p>
+        <ul>
+          <li>Designed marketing materials (logos, signage, apparel) using Adobe Suite and Canva.</li>
+          <li>Operated heat press / printing equipment, ensuring high-quality output.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>Dataworld Computer Center — On-the-Job Training</h3>
+        <p class="job-meta">Divisoria, Cagayan de Oro — Nov 2019 – Apr 2020</p>
+        <ul>
+          <li>Assisted in troubleshooting network issues and configuring Cisco switches / firewalls.</li>
+          <li>Gained hands-on experience in fiber splicing and CCTV system installation.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <footer style="margin-top:22px;color:#666;font-size:0.95rem">
+      <p>Generated from the portfolio site. Use your browser's Print -> Save as PDF to export.</p>
+    </footer>
+  </div>
+</body>
+</html>
