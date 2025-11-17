@@ -7,7 +7,7 @@ Quick preview (PowerShell)
 1. Open PowerShell and change to this folder (the folder that contains `index.html`):
 
 ```powershell
-cd 'C:\Users\Sparrow\Documents\zaru-profile\simple-portfolio\src'
+cd navigate to src
 ```
 
 2. Run the bundled server script (choose a port if you want):
