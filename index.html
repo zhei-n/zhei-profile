@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Your Name</title>
-  <!-- Google Font used for a clean, modern look -->
+  <title>Portfolio — Zhein Zambrano</title>
+  <meta name="description" content="System Administrator and IT Specialist with expertise in network infrastructure, ERP systems, and graphic design.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <meta name="color-scheme" content="light dark">
-  
 </head>
 <body>
-  <!-- particle background removed per user request -->
-  <!-- Header will be loaded dynamically from components/header.html for reuse.
-       A <noscript> fallback keeps the site usable when JavaScript is disabled.
-  <div id="site-header" data-component="header"></div>
-  <noscript>
-    <header class="site-header">
-      <div class="container header-inner">
-        <h1 class="site-title">Your Name</h1>
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-  </noscript>
--->
+  <!-- Header: Inline (no component loading) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">Zhein</h1>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
+    <!-- Hero Section -->
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
           <p class="eyebrow">Hi, I'm Zhein</p>
           <h2 class="hero-title">System Administrator and IT Specialist</h2>
-          <p class="lead">expertise in securing and managing multi-branch network infrastructure, proactive system monitoring, and the implementation of business-critical ERP systems. </p>
+          <p class="lead">Expertise in securing and managing multi-branch network infrastructure, proactive system monitoring, and the implementation of business-critical ERP systems.</p>
           <p class="hero-cta">
-            <a class="cta" href="#projects">Project</a>
-          <!-- <a class="btn-link" href="neil.zambrano.it@gmail.com">Contact</a> -->
+            <a class="cta" href="#projects">View Projects</a>
+            <a class="btn-link" href="#contact">Get in Touch</a>
           </p>
         </div>
         <div class="hero-illustration" aria-hidden="true">
-          <!-- decorative illustration replaced with local avatar provided by user; add a safe fallback if the image fails to load -->
           <div class="device-mockup">
-            <img src="assets/image-avatar.png" alt="avatar" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/360x360?text=Avatar'"/>
+            <img src="assets/image-avatar.png" alt="Zhein Zambrano avatar" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/360x360?text=Avatar'"/>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="container about">
       <h2>About</h2>
-      <p>IT Staff / System Analyst | Network & System Administrator | Graphic Designer</p>
+      <p><strong>IT Staff / System Analyst | Network & System Administrator | Graphic Designer</strong></p>
       <p>I am a System Administrator with a versatile background in maintaining robust IT infrastructure, enhancing network security, and streamlining business operations. My expertise spans network administration (PfSense, MikroTik, Cisco), proactive system monitoring (Zabbix, Wazuh), and ERP system management (Acumatica, Odoo). I combine technical proficiency with a creative flair for graphic design to support both internal systems and external marketing initiatives.</p>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="container projects">
       <div class="section-header">
         <h2>Projects</h2>
@@ -62,13 +62,12 @@
       <div id="projects-list" class="projects-grid" aria-live="polite"></div>
     </section>
 
+    <!-- Experience Section -->
     <section id="experience" class="container experience">
       <div class="section-header">
         <h2>Skills</h2>
-              </div>
-            </div>
         <p class="section-actions">
-          <a class="btn-link" href="resume.html" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
+          <a class="btn-link" href="resume.html" target="_blank" rel="noopener noreferrer">View Resume</a>
         </p>
       </div>
 
@@ -79,7 +78,7 @@
         </div>
         <div class="skill-category">
           <h3>Systems</h3>
-          <p>Windows / Linux servers, Nextcloud, Synology, Asterisk VOIP</p>
+          <p>Windows / Linux, Nextcloud, Synology, Asterisk VOIP</p>
         </div>
         <div class="skill-category">
           <h3>Security</h3>
@@ -99,37 +98,36 @@
         </div>
       </div>
 
-      <class="accomplishments">
+      <!-- Experience with Marquee -->
+      <div class="accomplishments">
         <h3>Experience</h3>
-        <!-- CSS-only infinite marquee style carousel -->
-        <div class="accomp-marquee" style="--marquee-duration: 16s;" aria-hidden="false">
+        <div class="accomp-marquee" style="--marquee-duration: 16s;">
           <div class="marquee-track">
             <div class="marquee-item"><img class="accomp-img" src="assets/images/image-1.jpg" alt="Goldtown Industrial Sales Corporation" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-2.jpg" alt="Smile Printing Services / JVH Printing Services" loading="lazy" /></div>
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-2.jpg" alt="Smile Printing Services" loading="lazy" /></div>
             <div class="marquee-item"><img class="accomp-img" src="assets/images/image-3.jpg" alt="Dataworld Computer Center" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-4.jpeg" alt="Additional accomplishment 1" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-5.jpeg" alt="Additional accomplishment 2" loading="lazy" /></div>
-
-            <!-- duplicate set for seamless infinite scroll -->
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-4.jpeg" alt="Project work" loading="lazy" /></div>
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-5.jpeg" alt="Additional work" loading="lazy" /></div>
+            <!-- Duplicate for seamless scroll -->
             <div class="marquee-item"><img class="accomp-img" src="assets/images/image-1.jpg" alt="Goldtown Industrial Sales Corporation" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-2.jpg" alt="Smile Printing Services / JVH Printing Services" loading="lazy" /></div>
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-2.jpg" alt="Smile Printing Services" loading="lazy" /></div>
             <div class="marquee-item"><img class="accomp-img" src="assets/images/image-3.jpg" alt="Dataworld Computer Center" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-4.jpeg" alt="Additional accomplishment 1" loading="lazy" /></div>
-            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-5.jpeg" alt="Additional accomplishment 2" loading="lazy" /></div>
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-4.jpeg" alt="Project work" loading="lazy" /></div>
+            <div class="marquee-item"><img class="accomp-img" src="assets/images/image-5.jpeg" alt="Additional work" loading="lazy" /></div>
           </div>
         </div>
-      </br>
+
         <article class="job">
           <h4>Goldtown Industrial Sales Corporation — System Administrator</h4>
           <p class="job-meta">Lapasan, Cagayan de Oro — Jan 2023 – Feb 2025</p>
           <ul>
             <li>Reduced system downtime through proactive monitoring (Zabbix, Wazuh) and troubleshooting.</li>
-            <li>Configured and secured network infrastructure (PfSense, MikroTik switches, VPNs) across 5+ branches and 4 sister companies.</li>
+            <li>Configured and secured network infrastructure (PfSense, MikroTik switches, VPNs) across 5+ branches and 6 sister companies.</li>
             <li>Streamlined file management by administering Nextcloud / Synology systems for 100+ users.</li>
             <li>Developed video tutorials and training materials (Adobe Suite, Canva) to improve ERP software adoption.</li>
           </ul>
         </article>
-      </br>
+
         <article class="job">
           <h4>Smile Printing Services / JVH Printing Services — Graphic Artist (Freelance/Contract)</h4>
           <p class="job-meta">Balingasag, Misamis Oriental</p>
@@ -138,44 +136,36 @@
             <li>Operated heat press / printing equipment, ensuring high-quality output.</li>
           </ul>
         </article>
-      </br>
+
         <article class="job">
           <h4>Dataworld Computer Center — On-the-Job Training</h4>
           <p class="job-meta">Divisoria, Cagayan de Oro — Nov 2019 – Apr 2020</p>
           <ul>
-            <li>Assisted in troubleshooting network issues and configuring Cisco switches / firewalls.</li>
-            <li>Gained hands-on experience in fiber splicing and CCTV system installation.</li>
+            <li>Assisted in troubleshooting network issues and configuring Cisco switches / Palo Alto , Fortinet , Sophos firewalls.</li>
+            <li>Gained hands-on experience in fiber splicing/termination and CCTV system installation.</li>
           </ul>
         </article>
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="container contact">
       <h2>Contact</h2>
-      <p>Interested in working together? <a href="neil.zambrano.it.com">neil.zambrano.it.com</a></p>
+      <p>Interested in working together? Reach me at <a href="mailto:neil.zambrano.it@gmail.com">neil.zambrano.it@gmail.com</a></p>
     </section>
   </main>
 
+  <!-- Footer: Inline (no component loading) -->
   <footer class="site-footer">
-      <!-- Footer loaded dynamically from components/footer.html -->
-      <div id="site-footer" data-component="footer"></div>
-      <noscript>
-        <footer class="site-footer">
-          <div class="container footer-inner">
-            <p>&copy; <span id="year">2023</span> Your Name</p>
-            <p class="social">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </p>
-          </div>
-        </footer>
-      </noscript>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2025</span> Zhein. All rights reserved.</p>
+      <p class="social">
+        <a href="https://github.com/zhei-n" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/za-rueimi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
 
-  <!-- main app JS -->
   <script src="js/main.js"></script>
-  <!-- Neon toggle control -->
-    <!--
-  <button id="neon-toggle" aria-pressed="true" title="Toggle neon effects">NEON</button>
-    -->
 </body>
 </html>
