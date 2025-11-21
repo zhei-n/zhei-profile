@@ -265,6 +265,14 @@ main, .site-header, .site-footer {
     justify-content: center;
     background: linear-gradient(180deg, rgba(2,6,23,0.92), rgba(2,6,23,0.96));
     z-index: 120;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.mobile-open .mobile-nav {
+    display: flex;
+    opacity: 1;
 }
 
 .mobile-nav .main-nav {
@@ -275,15 +283,17 @@ main, .site-header, .site-footer {
 .mobile-nav .main-nav a {
     font-size: 1.25rem;
     color: var(--text);
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.mobile-nav .main-nav a:hover {
+    color: var(--accent-1);
+    transform: translateX(8px);
 }
 
 .mobile-nav .close-area {
     position: absolute;
     inset: 0;
-}
-
-.mobile-open .mobile-nav {
-    display: flex;
 }
 
 .mobile-open .nav-toggle[aria-expanded="true"] .hamburger {
@@ -379,6 +389,39 @@ main, .site-header, .site-footer {
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
+}
+
+/* Social badges */
+.hero-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.social-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--muted);
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.social-badge:hover {
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    border-color: var(--accent-1);
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 122, 162, 0.3);
+}
+
+.social-badge svg {
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* ========================================
@@ -950,6 +993,21 @@ button:focus {
     
     .hero-title {
         font-size: 1.6rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta, .btn-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-social {
+        justify-content: center;
+        margin-top: 24px;
     }
     
     .projects-grid {
