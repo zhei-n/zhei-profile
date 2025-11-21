@@ -17,20 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!heroTitle) return;
 
         const fullText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        heroTitle.classList.add('typing');
-
+        let displayText = '';
         let index = 0;
         const typingSpeed = 60; // milliseconds per character
 
+        heroTitle.textContent = '';
+        heroTitle.classList.add('typing');
+
         function typeNextChar() {
             if (index < fullText.length) {
-                heroTitle.textContent += fullText[index];
+                displayText += fullText[index];
+                heroTitle.textContent = displayText;
                 index++;
                 setTimeout(typeNextChar, typingSpeed);
             } else {
-                // Remove cursor class after typing completes to keep just the text
                 heroTitle.classList.remove('typing');
+                document.body.classList.add('loaded');
             }
         }
 
@@ -403,9 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, observerOptions);
 
-        // Observe sections and key elements
-        document.querySelectorAll('section, .card, .skill-category').forEach(el => {
-            observer.observe(el);
+        // Observe sections and key elements with requestAnimationFrame for optimization
+        requestAnimationFrame(() => {
+            document.querySelectorAll('section, .card, .skill-category').forEach(el => {
+                observer.observe(el);
+            });
         });
     }
 });
