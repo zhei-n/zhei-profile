@@ -37,7 +37,50 @@ body {
     background: linear-gradient(180deg, var(--bg) 0%, #06070a 100%);
     color: var(--text);
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
 }
+
+/* Animated particle background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(107, 140, 255, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(255, 122, 162, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 220, 0.4) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 80% 10%, rgba(160, 255, 120, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 10% 90%, rgba(107, 140, 255, 0.4) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 90% 60%, rgba(255, 122, 162, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 30% 60%, rgba(0, 255, 220, 0.5) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 70% 30%, rgba(107, 140, 255, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(255, 122, 162, 0.5) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 15% 20%, rgba(160, 255, 120, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 85% 85%, rgba(0, 255, 220, 0.5) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 45% 15%, rgba(107, 140, 255, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 25% 75%, rgba(255, 122, 162, 0.4) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 75% 45%, rgba(160, 255, 120, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 55% 25%, rgba(0, 255, 220, 0.4) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 35% 45%, rgba(107, 140, 255, 0.5) 1px, transparent 1px);
+    background-size: 300px 300px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    animation: particles-move 30s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+@keyframes particles-move {
+    0% { background-position: 0 0; }
+    50% { background-position: 50px 50px; }
+    100% { background-position: 0 0; }
+}
+
 
 /* ========================================
    Layout
@@ -50,7 +93,7 @@ body {
 
 main, .site-header, .site-footer {
     position: relative;
-    z-index: 10;
+    z-index: 20;
 }
 
 /* ========================================
@@ -219,6 +262,30 @@ main, .site-header, .site-footer {
     font-size: 2.25rem;
     margin: 6px 0 12px;
     line-height: 1.02;
+    min-height: 3.3em;
+    display: inline-block;
+}
+
+/* Typing animation - IMPROVED CURSOR */
+.hero-title.typing {
+    position: relative;
+    padding-right: 4px;
+}
+
+.hero-title.typing::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2px;
+    height: 1em;
+    background: var(--accent-1);
+    animation: typing-cursor 0.6s step-end infinite;
+}
+
+@keyframes typing-cursor {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
 .hero-illustration .device-mockup {
@@ -486,6 +553,12 @@ main, .site-header, .site-footer {
     padding: 14px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.03);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.06);
 }
 
 .skill-category h3 {
@@ -512,6 +585,11 @@ main, .site-header, .site-footer {
     padding: 14px;
     border-radius: 10px;
     margin-bottom: 12px;
+    transition: background 0.2s ease;
+}
+
+.job:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
 }
 
 .job h4 {
@@ -557,6 +635,11 @@ main, .site-header, .site-footer {
     max-width: 260px;
     border-radius: 8px;
     display: block;
+    transition: transform 0.2s ease;
+}
+
+.marquee-item .accomp-img:hover {
+    transform: scale(1.05);
 }
 
 @keyframes marquee-scroll {

@@ -4,10 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Initialize all features
+    initTypingAnimation();
     loadProjects();
     initScrolling();
     initMobileNav();
     initHybridCarousel();
+
+    // Typing animation for hero title
+    function initTypingAnimation() {
+        const heroTitle = document.querySelector('.hero-title');
+        if (!heroTitle) return;
+
+        const fullText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        heroTitle.classList.add('typing');
+
+        let index = 0;
+        const typingSpeed = 60; // milliseconds per character
+
+        function typeNextChar() {
+            if (index < fullText.length) {
+                heroTitle.textContent += fullText[index];
+                index++;
+                setTimeout(typeNextChar, typingSpeed);
+            } else {
+                // Remove cursor class after typing completes to keep just the text
+                heroTitle.classList.remove('typing');
+            }
+        }
+
+        // Start typing with a small delay for better UX
+        setTimeout(typeNextChar, 300);
+    }
 
     // Load and render projects from JSON
     async function loadProjects() {
@@ -24,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             projectsList.innerHTML = '<p>Could not load projects at this time.</p>';
         }
     }
-
     function renderProjects(projects = []) {
         const projectsList = document.getElementById('projects-list');
         if (!projectsList) return;
@@ -34,19 +61,68 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('article');
             card.className = 'card';
             card.setAttribute('data-visible', 'false');
-            card.innerHTML = `
-                ${p.image ? `<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)} screenshot" loading="lazy" />` : ''}
-                <div class="card-body">
-                    <h3 class="card-title">${escapeHtml(p.title)}</h3>
-                    <p class="card-desc">${escapeHtml(p.description)}</p>
-                    <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>
-                    <div class="card-links">
-                        ${p.demo ? `<a class="btn-link btn-primary" href="${escapeHtml(p.demo)}" target="_blank" rel="noopener noreferrer">Live demo</a>` : ''}
-                        ${p.repo ? `<a class="btn-link" href="${escapeHtml(p.repo)}" target="_blank" rel="noopener noreferrer">Source</a>` : ''}
-                    </div>
-                </div>
-            `;
+
+            // Image (with graceful fallback)
+            if (p.image) {
+                const img = document.createElement('img');
+                img.src = p.image;
+                img.alt = `${p.title} screenshot`;
+                img.loading = 'lazy';
+                img.addEventListener('error', () => {
+                    img.onerror = null;
+                    img.src = 'https://via.placeholder.com/600x360?text=Project';
+                });
+                card.appendChild(img);
+            }
+
+            const body = document.createElement('div');
+            body.className = 'card-body';
+
+            const h3 = document.createElement('h3');
+            h3.className = 'card-title';
+            h3.textContent = p.title || '';
+            body.appendChild(h3);
+
+            const desc = document.createElement('p');
+            desc.className = 'card-desc';
+            desc.textContent = p.description || '';
+            body.appendChild(desc);
+
+            const tagsWrap = document.createElement('div');
+            tagsWrap.className = 'tags';
+            (p.tags || []).forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.textContent = t;
+                tagsWrap.appendChild(span);
+            });
+            body.appendChild(tagsWrap);
+
+            const links = document.createElement('div');
+            links.className = 'card-links';
+            if (p.demo) {
+                const a = document.createElement('a');
+                a.className = 'btn-link btn-primary';
+                a.href = p.demo;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'Live demo';
+                links.appendChild(a);
+            }
+            if (p.repo) {
+                const a2 = document.createElement('a');
+                a2.className = 'btn-link';
+                a2.href = p.repo;
+                a2.target = '_blank';
+                a2.rel = 'noopener noreferrer';
+                a2.textContent = 'Source';
+                links.appendChild(a2);
+            }
+            body.appendChild(links);
+
+            card.appendChild(body);
             projectsList.appendChild(card);
+
             // Staggered reveal animation
             setTimeout(() => card.setAttribute('data-visible', 'true'), 120 * i + 80);
         });
@@ -99,10 +175,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const body = document.body;
 
-        // Create mobile nav overlay
+        // Improve accessibility: point toggle to the mobile nav
+        toggle.setAttribute('aria-controls', 'mobile-nav');
+
+        // Create mobile nav overlay (guard if no .main-nav present)
+        const origNav = document.querySelector('.main-nav');
+        if (!origNav) return;
+
         const mobileNav = document.createElement('div');
         mobileNav.className = 'mobile-nav';
-        const cloneNav = document.querySelector('.main-nav').cloneNode(true);
+        mobileNav.id = 'mobile-nav';
+        const cloneNav = origNav.cloneNode(true);
         mobileNav.appendChild(cloneNav);
 
         // Close area (click outside to close)
@@ -111,6 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNav.appendChild(closeArea);
         
         body.appendChild(mobileNav);
+
+        // Close on Escape key for better keyboard support
+        function onKey(e) {
+            if (e.key === 'Escape') close();
+        }
 
         function open() {
             toggle.setAttribute('aria-expanded', 'true');
@@ -128,6 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
             expanded ? close() : open();
         });
 
+        // Add keyboard listener when mobile nav is open
+        document.addEventListener('keydown', onKey);
+
         // Close when clicking outside
         closeArea.addEventListener('click', close);
 
@@ -135,6 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNav.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', close);
         });
+        
+        // Cleanup when script is unloaded (best-effort)
+        window.addEventListener('unload', () => document.removeEventListener('keydown', onKey));
     }
 
     // Hybrid: CSS marquee on desktop, JS carousel on mobile

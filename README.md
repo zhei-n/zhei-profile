@@ -4,10 +4,10 @@ This folder contains a small static portfolio site. If you don't have Python ins
 
 Quick preview (PowerShell)
 
-1. Open PowerShell and change to this folder (the folder that contains `index.html`):
+1. Open PowerShell and change to the project folder (the folder that contains `index.html`). For example:
 
 ```powershell
-cd navigate to src
+cd C:\path\to\zhei-profile
 ```
 
 2. Run the bundled server script (choose a port if you want):
