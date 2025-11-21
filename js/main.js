@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrolling();
     initMobileNav();
     initHybridCarousel();
+    initScrollAnimations();
 
     // Typing animation for hero title
     function initTypingAnimation() {
@@ -384,5 +385,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mq.addEventListener('change', sync);
         sync();
+    }
+
+    // Scroll animations - fade in elements as they come into view
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections and key elements
+        document.querySelectorAll('section, .card, .skill-category').forEach(el => {
+            observer.observe(el);
+        });
     }
 });

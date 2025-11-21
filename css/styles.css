@@ -20,6 +20,51 @@
 }
 
 /* ========================================
+   Animations & Transitions
+   ======================================== */
+
+/* Fade in animation for scroll */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section, .skill-category {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+    animation-play-state: paused;
+}
+
+.card {
+    /* Cards already have their own visibility handling */
+    opacity: 1;
+}
+
+.fade-in-visible {
+    animation-play-state: running !important;
+}
+
+/* Stagger animation for multiple elements */
+.skill-category:nth-child(1) { animation-delay: 0.2s; }
+.skill-category:nth-child(2) { animation-delay: 0.4s; }
+.skill-category:nth-child(3) { animation-delay: 0.6s; }
+.skill-category:nth-child(4) { animation-delay: 0.2s; }
+.skill-category:nth-child(5) { animation-delay: 0.4s; }
+.skill-category:nth-child(6) { animation-delay: 0.6s; }
+
+/* Section stagger */
+section:nth-of-type(1) { animation-delay: 0.1s; }
+section:nth-of-type(2) { animation-delay: 0.2s; }
+section:nth-of-type(3) { animation-delay: 0.3s; }
+section:nth-of-type(4) { animation-delay: 0.4s; }
+section:nth-of-type(5) { animation-delay: 0.5s; }
+/* ========================================
    Base Styles
    ======================================== */
 * {
@@ -127,6 +172,11 @@ main, .site-header, .site-footer {
     margin: 0;
     font-weight: 700;
     color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.site-title:hover {
+    text-shadow: 0 0 10px rgba(255, 122, 162, 0.4);
 }
 
 /* ========================================
@@ -144,11 +194,27 @@ main, .site-header, .site-footer {
     text-decoration: none;
     margin-left: 0;
     font-weight: 600;
-    transition: color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .main-nav a:hover {
     color: var(--text);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
 }
 
 /* Nav toggle (hamburger) */
@@ -309,6 +375,10 @@ main, .site-header, .site-footer {
 
 .hero-cta {
     margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 /* ========================================
@@ -323,12 +393,14 @@ main, .site-header, .site-footer {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255,122,162,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255,122,162,0.4);
 }
 
 .btn-link {
@@ -339,7 +411,7 @@ main, .site-header, .site-footer {
     border-radius: 10px;
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.06);
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .btn-link:hover {
@@ -358,7 +430,7 @@ main, .site-header, .site-footer {
    ======================================== */
 .about, .projects, .contact, .experience {
     background: transparent;
-    padding: 36px 0;
+    padding: 64px 0;
 }
 
 .section-header {
@@ -387,6 +459,7 @@ main, .site-header, .site-footer {
     flex-direction: column;
     transition: transform .26s cubic-bezier(.2,.9,.2,1), box-shadow .26s;
     box-shadow: 0 6px 20px rgba(0,0,0,0.6), inset 0 0 14px rgba(255,255,255,0.02);
+    opacity: 1;
 }
 
 /* Neon glow effect */
@@ -435,7 +508,7 @@ main, .site-header, .site-footer {
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.02), 0 0 40px rgba(255, 122, 162, 0.25);
 }
 
 .card:hover::before {
@@ -553,12 +626,34 @@ main, .site-header, .site-footer {
     padding: 14px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.03);
-    transition: transform 0.2s ease, background 0.2s ease;
+    border-left: 3px solid var(--accent-2);
+    transition: transform 0.2s ease, background 0.2s ease, border-left-color 0.2s ease;
 }
 
 .skill-category:hover {
     transform: translateY(-2px);
     background: rgba(255,255,255,0.06);
+    border-left-color: var(--accent-1);
+}
+
+.skill-category:nth-child(2) {
+    border-left-color: var(--accent-1);
+}
+
+.skill-category:nth-child(3) {
+    border-left-color: rgba(0, 255, 220, 0.8);
+}
+
+.skill-category:nth-child(4) {
+    border-left-color: rgba(160, 255, 120, 0.8);
+}
+
+.skill-category:nth-child(5) {
+    border-left-color: var(--accent-1);
+}
+
+.skill-category:nth-child(6) {
+    border-left-color: var(--accent-2);
 }
 
 .skill-category h3 {
