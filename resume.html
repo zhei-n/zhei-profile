@@ -4,20 +4,141 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Resume — Zhein Zambrano</title>
-  <link href="css/styles.css" rel="stylesheet">
   <style>
-    /* Minimal overrides for a clean print layout */
-    body{background:#fff;color:#111}
-    .container{max-width:760px;padding:28px;margin:0 auto}
-    header.resume-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    header.resume-header h1{margin:0;font-size:1.4rem}
-    .print-btn{display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:#f5f7fb;color:#111;text-decoration:none}
-    .skills-grid{display:block}
-    .skill-category{background:transparent;padding:6px;border-radius:4px;border:0}
-    .job{background:transparent;padding:8px;border-radius:4px;margin-bottom:8px}
-    @media print{
-      .print-only{display:none}
-      a[href]:after{content:''}
+    /* Reset and base styles for resume */
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 760px;
+      padding: 40px;
+      margin: 0 auto;
+    }
+    
+    header.resume-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 16px;
+    }
+    
+    header.resume-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .print-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background: #f5f7fb;
+      color: #111;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .print-btn:hover {
+      background: #e8ecf1;
+      border-color: #bbb;
+    }
+    
+    section {
+      margin-bottom: 28px;
+    }
+    
+    section h2 {
+      font-size: 1.3rem;
+      margin: 20px 0 12px;
+      color: #111;
+      border-bottom: 2px solid #ff7aa2;
+      padding-bottom: 6px;
+    }
+    
+    section h3 {
+      font-size: 1.1rem;
+      margin: 12px 0 4px;
+      font-weight: 600;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    .skill-category {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 4px;
+      border-left: 3px solid #ff7aa2;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .job {
+      background: transparent;
+      padding: 12px 0;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .job:last-child {
+      border-bottom: none;
+    }
+    
+    .job-meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0;
+      font-style: italic;
+    }
+    
+    .job ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #333;
+    }
+    
+    .job ul li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+      color: #666;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    @media print {
+      body {
+        background: #fff;
+      }
+      .print-only {
+        display: none;
+      }
+      a[href]:after {
+        content: '';
+      }
     }
   </style>
 </head>
@@ -26,13 +147,13 @@
     <header class="resume-header">
       <h1>Neil Ian C. Zambrano</h1>
       <div class="print-only">
-        <a href="#" class="print-btn" onclick="window.print();return false">Print / Save as PDF</a>
+        <a class="print-btn" onclick="window.print();return false">Print / Save as PDF</a>
       </div>
     </header>
 
     <section>
       <h2>Contact</h2>
-      <p>Email: neil.zambrano.it@gmail.com</p>
+      <p><strong>Email:</strong> neil.zambrano.it@gmail.com</p>
     </section>
 
     <section>
@@ -48,7 +169,7 @@
     </section>
 
     <section>
-      <h2>Accomplishments</h2>
+      <h2>Experience</h2>
 
       <article class="job">
         <h3>Goldtown Industrial Sales Corporation — System Administrator</h3>
