@@ -7,7 +7,7 @@ Quick preview (PowerShell)
 1. Open PowerShell and change to the project folder (the folder that contains `index.html`). For example:
 
 ```powershell
-cd C:\path\to\zhei-profile
+cd C:\path\to\profile
 ```
 
 2. Run the bundled server script (choose a port if you want):
@@ -45,7 +45,7 @@ Notes
  
 GitHub Pages (quick deploy)
 
-1. Create a GitHub repository for your project (if you haven't already) and push the nested `simple-portfolio/simple-portfolio/src` contents to a branch (for example `gh-pages`) or to the repository root.
+1. Create a GitHub repository for your project (if you haven't already) and push the nested `your-folder/src` contents to a branch (for example `gh-pages`) or to the repository root.
 
 2. Easiest (deploy from `gh-pages` branch):
 
@@ -66,3 +66,4 @@ Notes about paths
 
 Need help publishing?
 - I can create a small script to automate the branch push for you, or help configure GitHub Actions to deploy automatically from `main` to `gh-pages`.
+
