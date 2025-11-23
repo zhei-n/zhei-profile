@@ -11,7 +11,7 @@
     --glass: rgba(255,255,255,0.04);
     --text: #e6eefc;
     --marquee-duration: 20s;
-    
+
     /* Neon palette (RGB components) */
     --neon-1-rgb: 107,140,255;
     --neon-2-rgb: 255,122,162;
@@ -41,11 +41,6 @@ section, .skill-category {
     animation-play-state: paused;
 }
 
-.card {
-    /* Cards already have their own visibility handling */
-    opacity: 1;
-}
-
 .fade-in-visible {
     animation-play-state: running !important;
 }
@@ -64,9 +59,6 @@ section:nth-of-type(2) { animation-delay: 0.2s; }
 section:nth-of-type(3) { animation-delay: 0.3s; }
 section:nth-of-type(4) { animation-delay: 0.4s; }
 section:nth-of-type(5) { animation-delay: 0.5s; }
-/* ========================================
-   Base Styles
-   ======================================== */
 * {
     box-sizing: border-box;
 }
@@ -305,18 +297,21 @@ main, .site-header, .site-footer {
    Hero Section
    ======================================== */
 .hero {
-    padding: 64px 0 32px;
+    padding: 64px 0 22px;
 }
 
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 420px;
-    gap: 28px;
+    gap: 20px;
     align-items: center;
 }
-
+.lead {
+    font-size: 1.125rem;
+    margin: 0 0 30px;
+}
 .hero .lead {
-    max-width: 54ch;
+    max-width: 50ch;
     color: var(--muted);
     line-height: 1.6;
 }
@@ -496,6 +491,12 @@ main, .site-header, .site-footer {
     transition: transform .26s cubic-bezier(.2,.9,.2,1), box-shadow .26s;
     box-shadow: 0 6px 20px rgba(0,0,0,0.6), inset 0 0 14px rgba(255,255,255,0.02);
     opacity: 1;
+}
+
+.hero .lead {
+    max-width: 50ch;
+    color: var(--muted);
+    line-height: 1.6;
 }
 
 /* Neon glow effect */
@@ -930,7 +931,7 @@ button:focus {
     html {
         scroll-behavior: auto;
     }
-    
+
     .card,
     .card::before,
     .card::after,
@@ -940,7 +941,7 @@ button:focus {
         animation: none !important;
         transition: none !important;
     }
-    
+
     .card:hover {
         transform: none;
     }
@@ -953,15 +954,15 @@ button:focus {
     .hero-grid {
         grid-template-columns: 1fr 340px;
     }
-    
+
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .marquee-item .accomp-img {
         max-width: 160px;
     }
@@ -979,57 +980,57 @@ button:focus {
         grid-template-columns: 1fr;
         gap: 18px;
     }
-    
+
     .hero-illustration {
         order: -1;
     }
-    
+
     .hero-title {
         font-size: 1.6rem;
     }
-    
+
     .hero-cta {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .cta, .btn-link {
         width: 100%;
         text-align: center;
     }
-    
+
     .hero-social {
         justify-content: center;
         margin-top: 24px;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-inner {
         flex-direction: column;
         gap: 12px;
         text-align: center;
     }
-    
+
     /* Show mobile nav toggle */
     .nav-toggle {
         display: block;
     }
-    
+
     .main-nav {
         display: none;
     }
-    
+
     .mobile-nav .main-nav {
         display: flex;
     }
-    
+
     .accomp-img {
         max-width: 100px;
     }
@@ -1039,11 +1040,11 @@ button:focus {
     .card img {
         height: auto;
     }
-    
+
     .hero-illustration img {
         max-width: 100%;
     }
-    
+
     .container {
         padding: 16px;
     }
@@ -1081,7 +1082,7 @@ button:focus {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .about-video {
         aspect-ratio: 16 / 9;
     }
@@ -1099,22 +1100,22 @@ button:focus {
     .close-area {
         display: none !important;
     }
-    
+
     body {
         background: #fff;
         color: #111;
     }
-    
+
     .container {
         padding: 0;
         max-width: 760px;
         margin: 0 auto;
     }
-    
+
     a[href]:after {
         content: '';
     }
-    
+
     .card {
         break-inside: avoid;
     }
