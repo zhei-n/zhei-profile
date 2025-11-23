@@ -66,8 +66,10 @@
       font-size: 1.3rem;
       margin: 20px 0 12px;
       color: #111;
-      border-bottom: 2px solid #ff7aa2;
-      padding-bottom: 6px;
+      border-bottom: 3px solid #ff7aa2;
+      padding-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
     
     section h3 {
@@ -118,6 +120,29 @@
     .job ul li {
       margin-bottom: 6px;
       line-height: 1.5;
+      color: #222;
+    }
+    
+    .summary {
+      background: linear-gradient(135deg, rgba(255, 122, 162, 0.08), rgba(107, 140, 255, 0.08));
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 4px solid #ff7aa2;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    
+    .degree {
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 2px;
+    }
+    
+    .school {
+      color: #666;
+      font-size: 0.95rem;
+      font-style: italic;
     }
     
     footer {
@@ -150,6 +175,11 @@
         <a class="print-btn" onclick="window.print();return false">Print / Save as PDF</a>
       </div>
     </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary">System Administrator with 3+ years of experience managing multi-site IT environments. Specialized in Linux systems, virtualization (Proxmox), and secure network infrastructure design. Proven expertise in infrastructure automation, proactive monitoring, and reducing operational downtime through strategic system hardening and documentation. Strong background in ERP implementation support and technical training delivery.</p>
+    </section>
 
     <section>
       <h2>Contact</h2>
@@ -200,6 +230,14 @@
         </ul>
       </article>
 
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <article class="job">
+        <div class="degree">Bachelor of Science in Information Technology</div>
+        <p class="school">St. Rita's College of Balingasag</p>
+      </article>
     </section>
 
     <footer style="margin-top:22px;color:#666;font-size:0.95rem">
