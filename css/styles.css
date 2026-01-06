@@ -322,6 +322,32 @@ main, .site-header, .site-footer {
     margin: 0 0 6px;
 }
 
+.typewriter {
+    font-size: 2.25rem;
+    margin: 6px 0 12px;
+    line-height: 1.02;
+    min-height: 3.3em;
+    display: inline-block;
+}
+
+/* Typed words */
+#text {
+  color: #ff7aa2; /* green */
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  color: #6fffa9; /* optional: match text */
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .hero-title {
     font-size: 2.25rem;
     margin: 6px 0 12px;
@@ -352,6 +378,15 @@ main, .site-header, .site-footer {
     50%, 100% { opacity: 0; }
 }
 
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
 .hero-illustration .device-mockup {
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     padding: 10px;
@@ -360,6 +395,7 @@ main, .site-header, .site-footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: float 3s ease-in-out infinite;
 }
 
 .hero-illustration img {

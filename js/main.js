@@ -13,31 +13,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Typing animation for hero title
     function initTypingAnimation() {
-        const heroTitle = document.querySelector('.hero-title');
-        if (!heroTitle) return;
+        const phrases = [
+          " Infrastructure Specialist",
+          " Linux & Networking Enthusiast",
+          " Learning & Doing Useless Stuff"
+        ];
 
-        const fullText = heroTitle.textContent;
-        let displayText = '';
-        let index = 0;
-        const typingSpeed = 60; // milliseconds per character
+        const textEl = document.getElementById("text");
+        if (!textEl) return;
 
-        heroTitle.textContent = '';
-        heroTitle.classList.add('typing');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-        function typeNextChar() {
-            if (index < fullText.length) {
-                displayText += fullText[index];
-                heroTitle.textContent = displayText;
-                index++;
-                setTimeout(typeNextChar, typingSpeed);
-            } else {
-                heroTitle.classList.remove('typing');
-                document.body.classList.add('loaded');
+        function typeLoop() {
+          const currentPhrase = phrases[phraseIndex];
+
+          if (!isDeleting) {
+            textEl.textContent = currentPhrase.slice(0, charIndex++);
+            if (charIndex > currentPhrase.length) {
+              setTimeout(() => isDeleting = true, 1500);
             }
+          } else {
+            textEl.textContent = currentPhrase.slice(0, charIndex--);
+            if (charIndex === 0) {
+              isDeleting = false;
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+          }
+
+          setTimeout(typeLoop, isDeleting ? 50 : 100);
         }
 
-        // Start typing with a small delay for better UX
-        setTimeout(typeNextChar, 300);
+        typeLoop();
+        document.body.classList.add('loaded');
     }
 
     // Load and render projects from JSON
