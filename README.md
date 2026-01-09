@@ -64,6 +64,4 @@ git push -u origin gh-pages
 Notes about paths
 - If you publish to a repository page (not user page) the site is served from a subpath. Use root-relative paths in `index.html` or host assets relative to the site root. The current setup uses relative paths and should work when the files are placed at the repository root or in the `gh-pages` branch root.
 
-Need help publishing?
-- I can create a small script to automate the branch push for you, or help configure GitHub Actions to deploy automatically from `main` to `gh-pages`.
 
